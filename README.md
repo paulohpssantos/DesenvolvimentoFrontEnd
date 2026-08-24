@@ -1,6 +1,6 @@
-# DesenvolvimentoFrontEnd2025
+# Desenvolvimento FrontEnd
 
-Este repositório contém projetos, exercícios e exemplos desenvolvidos durante o curso de Desenvolvimento Front-End 2025, com foco em Angular e TypeScript. O objetivo é reunir materiais que abordam desde os conceitos básicos até tópicos avançados de desenvolvimento web moderno, utilizando o framework Angular e a linguagem TypeScript, além de boas práticas do mercado.
+Este repositório contém projetos, exercícios e exemplos desenvolvidos durante o curso de Desenvolvimento Front-End, com foco em Angular e TypeScript. O objetivo é reunir materiais que abordam desde os conceitos básicos até tópicos avançados de desenvolvimento web moderno, utilizando o framework Angular e a linguagem TypeScript, além de boas práticas do mercado.
 
 ## Conteúdo
 
