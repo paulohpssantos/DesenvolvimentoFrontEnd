@@ -1,0 +1,31 @@
+<img src="/imagens/unipar_logo.png">
+
+<div class="container">
+    <h2>Exercício 4 - Calcular Médias</h2>
+
+    <div class="campo">
+        <label for="n1">Número 1</label>
+        <input [(ngModel)]="n1" id="n1" type="number">
+    </div>
+    <div class="campo">
+        <label for="n2">Número 2</label>
+        <input [(ngModel)]="n2" id="n2" type="number">
+    </div>
+    <div class="campo">
+        <label for="n3">Número 3</label>
+        <input [(ngModel)]="n3" id="n3" type="number">
+    </div>
+
+    <div class="botoes">
+        <button (click)="calcularMedias()">Calcular</button>
+        <button (click)="limpar()">Limpar</button>
+    </div>
+
+    <div class="resultados"  *ngIf="mediaAritmetica !== null">
+        <p><strong>Média Aritmética:</strong> {{ mediaAritmetica | number:'1.2-2' }}</p>
+        <p><strong>Média Ponderada:</strong> {{ mediaPonderada | number:'1.2-2'}}</p>
+        <p><strong>Soma das Médias: </strong>{{ somaMedias | number:'1.2-2'}}</p>
+        <p><strong>Média das Médias:</strong> {{ mediaDasMedias | number:'1.2-2'}}</p>
+    </div>
+
+</div>
