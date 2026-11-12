@@ -1,0 +1,17 @@
+<input type="number" [(ngModel)]="numeroDigitado" placeholder="Digite um número">
+
+<button (click)="adicionarNumero()">Adicionar Número</button>
+
+<ul *ngIf="listaNumeros.length > 0">
+  <li *ngFor="let numero of listaNumeros; let i = index">
+      <span>{{ numero}}</span>
+      <button (click)="removerNumero(i)">
+        Remover
+      </button>
+  </li>
+</ul>
+<div *ngIf="listaNumeros.length > 0">
+  <p><strong>Quantidade: </strong>{{listaNumeros.length}}</p>
+  <p><strong>Soma: </strong>{{calcularSoma()}}</p>
+  <p><strong>Média: </strong>{{calcularMedia()}}</p>
+</div>
