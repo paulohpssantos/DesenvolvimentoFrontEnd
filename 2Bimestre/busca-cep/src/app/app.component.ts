@@ -1,12 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Endereco, ViaCepService } from './services/viacep.service';
 import { finalize } from 'rxjs';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -23,7 +22,7 @@ export class AppComponent {
     const digitos = (evento.target as 
       HTMLInputElement).value.replace(/\D/g, '').slice(0,8);
       this.cep.set(digitos);
-      if(digitos.length === 0) this.buscar();
+      if(digitos.length === 8) this.buscar();
   }
 
   buscar(){
