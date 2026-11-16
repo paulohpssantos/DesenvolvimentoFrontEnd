@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Endereco, ViaCepService } from './services/viacep.service';
+import { finalize } from 'rxjs';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { Endereco, ViaCepService } from './services/viacep.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  private viaCep = inject(ViaCepService);
+
   protected endereco = signal<Endereco | null>(null);
   protected cep = signal('');
   protected erro = signal<string | null>(null);
@@ -34,7 +37,19 @@ export class AppComponent {
     this.endereco.set(null);
 
     //Efetua a requisição com backend
-    
+    this.viaCep
+      .buscar(this.cep())
+      .pipe(finalize(() => this.carregando.set(false)))
+      .subscribe({
+        next: (endereco) => this.endereco.set(endereco),
+        error: (e: Error) => this.erro.set(e.message),
+      });
+  }
+
+  limpar() {
+    this.cep.set('');
+    this.erro.set(null);
+    this.endereco.set(null);
   }
 
 }
