@@ -1,0 +1,44 @@
+<main>
+  <h1>Buscar endereço pelo CEP</h1>
+
+  <form (submit)="$event.preventDefault(); buscar()">
+    <label for="cep">CEP</label>
+    <div class="linha">
+      <input
+        id="cep"
+        inputmode="numeric"
+        placeholder="Ex.: 01001000"
+        [value]="cep()"
+        (input)="aoDigitar($event)"
+      />
+      <button type="submit" [disabled]="carregando()">Buscar</button>
+      <button type="button" class="secundario" (click)="limpar()">Limpar</button>
+    </div>
+  </form>
+
+  <!-- Os três estados da tela -->
+  @if (carregando()) {
+    <p class="info">Consultando a ViaCEP…</p>
+  } @else if (erro()) {
+    <p class="erro">{{ erro() }}</p>
+  } @else if (endereco()) {
+    @let e = endereco()!;
+    <section class="cartao">
+      <h2>{{ e.logradouro || 'CEP geral da cidade' }}</h2>
+      <dl>
+        <dt>CEP</dt><dd>{{ e.cep }}</dd>
+        <dt>Bairro</dt><dd>{{ e.bairro || '—' }}</dd>
+        <dt>Cidade</dt><dd>{{ e.localidade }} / {{ e.uf }}</dd>
+        <dt>DDD</dt><dd>{{ e.ddd }}</dd>
+        @if (e.complemento) {
+          <dt>Complemento</dt><dd>{{ e.complemento }}</dd>
+        }
+      </dl>
+    </section>
+  }
+
+  <p class="dica">
+    Teste: <code>01001000</code> (existe) · <code>99999999</code> (não existe) ·
+    desligue a internet (erro de conexão).
+  </p>
+</main>

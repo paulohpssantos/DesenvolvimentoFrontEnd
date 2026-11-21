@@ -1,0 +1,21 @@
+<main>
+  <h1>Entrar</h1>
+
+  <form (ngSubmit)="entrar()">
+    <label for="usuario">Usuário</label>
+    <input id="usuario" name="usuario" [(ngModel)]="usuario" />
+
+    <label for="senha">Senha</label>
+    <input id="senha" name="senha" type="password" [(ngModel)]="senha" />
+
+    @if (erro()) {
+      <p class="erro">{{ erro() }}</p>
+    }
+
+    <button type="submit" [disabled]="carregando()">
+      {{ carregando() ? 'Entrando…' : 'Entrar' }}
+    </button>
+  </form>
+
+  <p class="dica">Teste com <code>emilys</code> / <code>emilyspass</code></p>
+</main>
